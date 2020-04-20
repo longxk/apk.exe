@@ -1,0 +1,53 @@
+plugins {
+    id "java-gradle-plugin"
+    id "maven-publish"
+    id "org.jetbrains.kotlin.jvm"
+    id 'com.jfrog.bintray' version '1.8.5'
+    id "com.gradle.plugin-publish" version "0.11.0"
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+}
+
+group = "com.longxk.apk_exe"
+version = apkexe_version
+
+gradlePlugin {
+    plugins {
+        apkExe {
+            id = "com.longxk.apk_exe"
+            implementationClass = "com.longxk.apk_exe.Plugin"
+            displayName = 'Apk.exe'
+        }
+    }
+}
+
+pluginBundle {
+    website = 'https://github.com/longxk/apk.exe'
+    vcsUrl = 'https://github.com/longxk/apk.exe.git'
+    description = 'Make a single ELF executable for Android from Java/Kotlin code'
+    tags = ['apk', 'exe', 'elf']
+}
+
+bintray {
+    user = _BINTRAY_USER_NAME
+    key = _BINTRAY_USER_KEY
+    publications = ['pluginMaven']
+    pkg {
+        repo = 'maven'
+        name = 'apk.exe_plugin'
+        userOrg = 'lxk'
+        licenses = ['WTFPL']
+        vcsUrl = 'https://github.com/longxk/apk.exe.git'
+    }
+}
+
+jar {
+    manifest {
+        attributes(
+                "Implementation-Title": "APK.EXE",
+                "Implementation-Version": version
+        )
+    }
+}

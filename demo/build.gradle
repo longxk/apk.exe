@@ -1,0 +1,32 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+//TODO    id 'com.longxk.apk_exe' version '0.0.1'
+}
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+    ndkVersion "21.0.6113669"
+
+    defaultConfig {
+        applicationId "com.longxk.apk_exe"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.github.kittinunf.fuel:fuel:2.2.1"
+}

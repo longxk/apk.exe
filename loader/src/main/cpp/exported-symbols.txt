@@ -1,0 +1,15 @@
+{
+  global:
+    dlopen;
+    open;
+    close;
+    read;
+    lseek;
+    lseek64;
+    pread;
+    pread64;
+    mmap;
+    mmap64;
+  local:
+    *;
+};
