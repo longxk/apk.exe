@@ -2,12 +2,13 @@ plugins {
     id "java-gradle-plugin"
     id "maven-publish"
     id "org.jetbrains.kotlin.jvm"
-    id 'com.jfrog.bintray' version '1.8.5'
+    id 'com.jfrog.bintray'
     id "com.gradle.plugin-publish" version "0.11.0"
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    compileOnly "com.android.tools.build:gradle:3.5.3"
 }
 
 group = "com.longxk.apk_exe"

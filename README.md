@@ -3,11 +3,17 @@ Apk.exe将Java/Kotlin代码转换为可以在Android系统上运行的单一可�
 ## 使用方法
 1. 新建一个Application类型的Android项目
 
-2. 新增gradle plugin，暂不可用，上传中
+2. 新增gradle plugin
 
 ```gradle
+buildscript {
+    dependencies {
+        classpath 'com.longxk.apk_exe:plugin:0.0.1'
+    }
+}
+
 plugins {
-    id 'com.longxk.apk_exe' version '0.0.1'
+    id 'com.longxk.apk_exe'
 }
 ```
 

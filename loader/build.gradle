@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'maven-publish'
-    id 'com.jfrog.bintray' version '1.8.5'
+    id 'com.jfrog.bintray'
     id 'digital.wup.android-maven-publish' version '3.6.2'
 }
 
