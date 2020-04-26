@@ -1,9 +1,13 @@
+[ENGLISH VERSION](https://github.com/longxk/apk.exe/blob/master/README.en.md)
+
 Apk.exe将Java/Kotlin代码转换为可以在Android系统上运行的单一可执行文件。
+
+Android 8/9/10上测试有效，支持armeabi-v7a, arm64-v8a, x86, x86_64架构。
 
 ## 使用方法
 1. 新建一个Application类型的Android项目
 
-2. 新增gradle plugin
+2. 添加Gradle Plugin依赖（jcenter）
 
 ```gradle
 buildscript {
@@ -17,18 +21,19 @@ plugins {
 }
 ```
 
-3. 新增入口类Main，并确保入口类中含有一个静态的main方法，与Java程序的入口方法一致
+3. 添加入口类**Main**（全名），并确保入口类中含有一个静态的**main**方法，与Java程序的入口方法一致
 
 4. 运行bundleApkExeRelease Task
 
 5. 生成的可执行文件保存在build/outputs/apkexe/Release目录下
 
-具体可以参考demo
+具体可以参考[Demo Application](https://github.com/longxk/apk.exe/tree/master/demo)。
 
 ## 原理
-Apk.exe本质上是一个Android系统app_process引导器，用于引导的可执行文件，和包含dex的apk文件，被合并在同一个文件中。
+Apk.exe本质上将一个引导程序文件与Android Studio编译生成的dex文件拼接合成一个单一可执行文件，
+引导程序用来引导Android系统的app_process程序加载引导程序文件本身，并修改app_process的行为，
+使得app_process将拼接了dex文件的引导文件作为dex运行。
 
-也就是说Apk.exe既是一个标准的ELF文件，也是一个标准的apk(zip)文件，Apk.exe启动后引导app_process将自身当成apk文件运行。
 
 ## 背景
 由于经常需要写一些在Android系统上运行的命令行小工具，但是对C/C++又不太熟悉，所以就尝试用Java来开发。
