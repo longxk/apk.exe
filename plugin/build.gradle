@@ -31,10 +31,27 @@ pluginBundle {
     tags = ['apk', 'exe', 'elf']
 }
 
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+publishing {
+    publications {
+        pluginJar(MavenPublication) {
+            groupId = 'com.longxk.apk_exe'
+            artifactId = 'plugin'
+            version = apkexe_version
+            from components.java
+            artifact sourcesJar
+        }
+    }
+}
+
 bintray {
     user = _BINTRAY_USER_NAME
     key = _BINTRAY_USER_KEY
-    publications = ['pluginMaven']
+    publications = ['pluginJar']
     pkg {
         repo = 'maven'
         name = 'apk.exe_plugin'

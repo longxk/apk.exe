@@ -42,6 +42,14 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 }
 
+group = "com.longxk.apk_exe"
+version = apkexe_version
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
 publishing {
     publications {
         loaderAar(MavenPublication) {
@@ -49,6 +57,7 @@ publishing {
             artifactId = 'loader'
             version = apkexe_version
             from components.android
+            artifact sourcesJar
         }
     }
 }

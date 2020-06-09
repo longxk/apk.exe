@@ -4,7 +4,7 @@ buildscript {
         apkexe_version = '0.0.1'
     }
     repositories {
-        mavenLocal()
+        //mavenLocal()
         google()
         jcenter()
     }
